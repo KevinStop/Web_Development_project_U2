@@ -131,5 +131,17 @@ namespace Web_development_project_U2.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Eliminar(int id)
+        {
+            using (bibliotecaEntities db = new bibliotecaEntities())
+            {
+                var oCliente = db.Libros.Find(id);
+                db.Libros.Remove(oCliente);
+                db.SaveChanges();
+            }
+            return Redirect("~/Home/Admin");
+        }
+
     }
 }
