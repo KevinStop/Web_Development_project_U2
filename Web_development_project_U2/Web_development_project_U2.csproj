@@ -197,6 +197,9 @@
     <Content Include="Views\Usuario\Login.cshtml" />
     <Content Include="Views\Usuario\Registro.cshtml" />
     <Content Include="Views\Usuario\Editar.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdminEdit.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
