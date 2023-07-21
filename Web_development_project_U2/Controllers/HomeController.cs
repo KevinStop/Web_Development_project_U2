@@ -22,7 +22,20 @@ namespace Web_development_project_U2.Controllers
 
         public ActionResult Admin()
         {
-            return View();
+            List<ListLibroViewModel> lst;
+            using (bibliotecaEntities db = new bibliotecaEntities())
+            {
+                lst = (from c in db.Libros
+                       select new ListLibroViewModel
+                       {
+                           id = c.id,
+                           titulo = c.titulo,
+                           autor = c.autor,
+                           anio_publicacion = c.anio_publicacion,
+                           categoria = c.categoria
+                       }).ToList();
+            }
+            return View(lst);
         }
     }
 }
