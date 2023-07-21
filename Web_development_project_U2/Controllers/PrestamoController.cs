@@ -127,7 +127,7 @@ namespace Web_development_project_U2.Controllers
         }
 
 
-
+        //Eliminar datos de la tabla
         [HttpGet]
         public ActionResult Eliminar(int id)
         {
