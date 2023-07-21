@@ -80,7 +80,7 @@ namespace Web_development_project_U2.Controllers
             }
             return View(prestamo);
         }
-
+        //Editar datos en la tabla
         [HttpPost]
         public ActionResult Editar(PrestamoViewModel prestamoModel)
         {
