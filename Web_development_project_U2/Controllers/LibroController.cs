@@ -143,5 +143,32 @@ namespace Web_development_project_U2.Controllers
             return Redirect("~/Home/Admin");
         }
 
+        public ActionResult getImage(int id)
+        {
+            bibliotecaEntities db = new bibliotecaEntities();
+            Libros model = db.Libros.Find(id);
+            byte[] byteImage = model.imagen;
+
+            if (byteImage != null && byteImage.Length > 0)
+            {
+                MemoryStream memoryStream = new MemoryStream(byteImage);
+                Image image = Image.FromStream(memoryStream);
+                memoryStream = new MemoryStream();
+                image.Save(memoryStream, ImageFormat.Jpeg);
+                memoryStream.Position = 0;
+                return File(memoryStream, "image/jpeg");
+            }
+            else
+            {
+                // Si el campo de imagen está vacío, puedes devolver una imagen de reemplazo o un mensaje de error.
+                // Por ejemplo:
+                // return File(Server.MapPath("~/Images/default_image.jpg"), "image/jpeg");
+                // O
+                // return Content("Imagen no disponible");
+                // O simplemente redirigir a una vista que muestre un mensaje apropiado.
+                return Content("Imagen no disponible");
+            }
+        }
+
     }
 }
