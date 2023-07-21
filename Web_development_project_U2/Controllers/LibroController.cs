@@ -1,28 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using Web_development_project_U2.Models.ViewModels;
 
 namespace Web_development_project_U2.Controllers
 {
-    public class HomeController : Controller
+    public class LibroController : Controller
     {
-        public ActionResult Index()
+        public ActionResult libro()
         {
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Nuevo()
         {
-            int userId = (int)Session["UserId"];
             return View();
         }
 
-        public ActionResult Admin()
+        public ActionResult Editar()
         {
             return View();
         }
+
     }
 }

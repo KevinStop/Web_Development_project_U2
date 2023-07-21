@@ -121,9 +121,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LibroController.cs" />
+    <Compile Include="Controllers\PrestamoController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Filters\FechaDevolucionValidaAttribute.cs" />
+    <Compile Include="Filters\VerifySession.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\LibroViewModel.cs" />
+    <Compile Include="Models\ViewModels\ListLibroViewModel.cs" />
+    <Compile Include="Models\ViewModels\ListPrestamoViewModel.cs" />
+    <Compile Include="Models\ViewModels\ListUsuarioViewModel.cs" />
+    <Compile Include="Models\ViewModels\PrestamoViewModel.cs" />
+    <Compile Include="Models\ViewModels\UsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -174,13 +185,21 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
+    <Content Include="Views\Libro\libro.cshtml" />
+    <Content Include="Views\Libro\Nuevo.cshtml" />
+    <Content Include="Views\Libro\Editar.cshtml" />
+    <Content Include="Views\Prestamo\prestamo.cshtml" />
+    <Content Include="Views\Prestamo\Editar.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Usuario\Login.cshtml" />
+    <Content Include="Views\Usuario\Registro.cshtml" />
+    <Content Include="Views\Usuario\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

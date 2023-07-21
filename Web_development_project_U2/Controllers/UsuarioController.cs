@@ -7,22 +7,28 @@ using Web_development_project_U2.Models.ViewModels;
 
 namespace Web_development_project_U2.Controllers
 {
-    public class HomeController : Controller
+    public class UsuarioController : Controller
     {
+        // GET: Usuario
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Login()
         {
-            int userId = (int)Session["UserId"];
             return View();
         }
 
-        public ActionResult Admin()
+        public ActionResult Registro()
         {
             return View();
         }
+
+        public ActionResult Editar()
+        {
+            return View();
+        }
+
     }
 }
