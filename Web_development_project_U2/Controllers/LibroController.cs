@@ -14,7 +14,22 @@ namespace Web_development_project_U2.Controllers
     {
         public ActionResult libro()
         {
-            return View();
+            nt userId = (int)Session["UserId"];
+            List<ListLibroViewModel> lst;
+            using (bibliotecaEntities db = new bibliotecaEntities())
+            {
+                lst = (from c in db.Libros
+                           //where c.id == userId
+                       select new ListLibroViewModel
+                       {
+                           id = c.id,
+                           titulo = c.titulo,
+                           autor = c.autor,
+                           anio_publicacion = c.anio_publicacion,
+                           categoria = c.categoria
+                       }).ToList();
+            }
+            return View(lst);
         }
 
         public ActionResult Nuevo()
