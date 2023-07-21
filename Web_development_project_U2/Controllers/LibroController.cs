@@ -80,9 +80,55 @@ namespace Web_development_project_U2.Controllers
             }
         }
 
-        public ActionResult Editar()
+        public ActionResult Editar(int id)
         {
-            return View();
+            LibroViewModel libro = new LibroViewModel();
+            using (bibliotecaEntities db = new bibliotecaEntities())
+            {
+                var oLibro = db.Libros.Find(id);
+                libro.titulo = oLibro.titulo;
+                libro.autor = oLibro.autor;
+                libro.anio_publicacion = oLibro.anio_publicacion;
+                libro.categoria = oLibro.categoria;
+                libro.id = oLibro.id;
+            }
+            return View(libro);
+        }
+
+        [HttpPost]
+        public ActionResult Editar(LibroViewModel libroModel, HttpPostedFileBase nuevaImagen)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (bibliotecaEntities db = new bibliotecaEntities())
+                    {
+                        var oLibro = db.Libros.Find(libroModel.id);
+                        oLibro.titulo = libroModel.titulo;
+                        oLibro.autor = libroModel.autor;
+                        oLibro.anio_publicacion = libroModel.anio_publicacion;
+                        oLibro.categoria = libroModel.categoria;
+
+                        if (nuevaImagen != null && nuevaImagen.ContentLength > 0)
+                        {
+                            // Si se proporciona una nueva imagen, convertirla a bytes y guardarla en el libro
+                            WebImage image = new WebImage(nuevaImagen.InputStream);
+                            oLibro.imagen = image.GetBytes();
+                        }
+
+                        db.Entry(oLibro).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    return Redirect("~/Home/Admin");
+                }
+
+                return View(libroModel);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
     }
