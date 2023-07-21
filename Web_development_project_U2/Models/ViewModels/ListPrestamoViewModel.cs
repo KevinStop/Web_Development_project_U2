@@ -5,6 +5,7 @@ using System.Web;
 
 namespace Web_development_project_U2.Models.ViewModels
 {
+    //Lista de la tabla de prestamos
     public class ListPrestamoViewModel
     {
         public int Id { get; set; }
