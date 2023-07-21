@@ -76,7 +76,7 @@ namespace Web_development_project_U2.Controllers
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception(ex.Message); 
             }
         }
 
