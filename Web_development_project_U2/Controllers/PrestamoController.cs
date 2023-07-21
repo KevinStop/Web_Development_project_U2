@@ -34,7 +34,7 @@ namespace Web_development_project_U2.Controllers
             return View(lst);
         }
 
-
+        //Ingresar un nuevo prestamo
         public ActionResult Nuevo(int libroId)
         {
             try
@@ -61,7 +61,7 @@ namespace Web_development_project_U2.Controllers
                 throw new Exception(ex.Message);
             }
         }
-
+        //Editar datos en la tabla
         public ActionResult Editar(int id)
         {
             PrestamoViewModel prestamo = new PrestamoViewModel();
