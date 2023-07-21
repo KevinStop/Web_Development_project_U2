@@ -37,6 +37,49 @@ namespace Web_development_project_U2.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Nuevo(LibroViewModel libroModel)
+        {
+            try
+            {
+                //Sintáxis para agregar la imagen
+                HttpPostedFileBase FileBase = Request.Files[0];
+
+                if (FileBase != null && FileBase.ContentLength > 0)
+                {
+                    // Si el campo de imagen tiene contenido, crear el WebImage
+                    WebImage image = new WebImage(FileBase.InputStream);
+                    libroModel.imagen = image.GetBytes();
+                }
+                else
+                {
+                    // Si el campo de imagen está vacío, asignar un valor nulo o un arreglo de bytes vacío
+                    libroModel.imagen = null; // o libroModel.imagen = new byte[0];
+                }
+
+                if (ModelState.IsValid)
+                {
+                    using (bibliotecaEntities db = new bibliotecaEntities())
+                    {
+                        var oLibro = new Libros();
+                        oLibro.titulo = libroModel.titulo;
+                        oLibro.autor = libroModel.autor;
+                        oLibro.anio_publicacion = libroModel.anio_publicacion;
+                        oLibro.categoria = libroModel.categoria;
+                        oLibro.imagen = libroModel.imagen;
+
+                        db.Libros.Add(oLibro);
+                        db.SaveChanges();
+                    }
+                }
+                return Redirect("~/Home/Admin");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public ActionResult Editar()
         {
             return View();
